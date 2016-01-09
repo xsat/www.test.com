@@ -1,0 +1,1 @@
+{{  partial("place/add") }}
