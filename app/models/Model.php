@@ -19,7 +19,9 @@ class Model extends \Phalcon\Mvc\Model
 
     public function getGridFields()
     {
-        return ['id' => 'ID'];
+        return [
+            'id' => 'ID'
+        ];
     }
 
     public function getCopyFields()
@@ -39,8 +41,6 @@ class Model extends \Phalcon\Mvc\Model
 
             return $this->save();
         }
-
-        //$this->appendMessage(new \Phalcon\Mvc\Model\Message('File error', $image->getKey()));
 
         return true;
     }

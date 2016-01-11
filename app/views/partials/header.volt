@@ -1,9 +1,3 @@
-{% if user is defined %}
-    <a class="admin" href="{{ url('user') }}">
-        Адмін панель
-    </a>
-{% endif %}
-
 <div class="row header">
     <div class="col-md-12">
         <a class="logo" href="/">
@@ -19,22 +13,29 @@
                     Катег 1
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    Катег 1
-                </a>
-            </li>
-            <li>
-                {% if user is defined %}
-                    <a class="active" href="{{ url('logout') }}">
+            {% if user is defined %}
+                <li>
+                    <a href="{{ url('user') }}">
+                        Адмін панель
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('logout') }}">
                         Вийти
                     </a>
-                {% else %}
-                    <a class="active" href="{{ url('login') }}">
+                <li>
+            {% else %}
+                <li>
+                    <a href="#">
+                        Катег 2
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('login') }}">
                         Зайти
                     </a>
-                {% endif %}
-            </li>
+                <li>
+            {% endif %}
         </ul>
     </div>
 </div>

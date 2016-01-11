@@ -13,13 +13,31 @@ class IndexController extends ParentController
         }
     }
 
+    public function afterExecuteRoute()
+    {
+        $this->leftMenuPlaces();
+    }
+
+    private function leftMenuPlaces()
+    {
+        $places = \Models\Place::find([
+            'conditions' => 'place_id IS NULL OR place_id = 0',
+            'order' => '_order DESC'
+        ]);
+
+        $this->view->setVar('places', $places);
+    }
+
     public function indexAction()
     {
-        $places = \Models\Place::find('place_id IS NULL OR place_id = 0');
         $id = $this->dispatcher->getParam('id');
         $place = \Models\Place::findFirst($id);
 
         if (!$place) {
+            if ($id) {
+                return $this->errorAction();
+            }
+
             $place = \Models\Place::findFirst('place_id IS NULL OR place_id = 0');
         }
 
@@ -28,10 +46,7 @@ class IndexController extends ParentController
             $this->view->setVar('breadcrumbs', $place->getBreadcrumbs());
         }
 
-        $this->view->setVars([
-            'places' => $places,
-            'place' => $place,
-        ]);
+        $this->view->setVar('place', $place);
     }
 
     public function loginAction()
@@ -40,7 +55,6 @@ class IndexController extends ParentController
             return $this->response->redirect('/');
         }
 
-        $places = \Models\Place::find('place_id IS NULL OR place_id = 0');
         $form = new \Forms\LoginForm();
         $model = new \Models\User();
         $form->setEntity($model);
@@ -51,11 +65,7 @@ class IndexController extends ParentController
             return $this->response->redirect('/user');
         }
 
-        $this->view->setVars([
-            'places' => $places,
-            'form' => $form,
-        ]);
-
+        $this->view->setVar('form', $form);
         $this->tag->setTitle('Зайти в адмін панель');
     }
 

@@ -47,8 +47,8 @@ class PersonForm extends ParentForm
 
         $this->add((new Text('email', [
             'class' => 'form-control',
-            'placeholder' => 'Поштова адресса',
-        ]))->setLabel('Поштова адресса')->setFilters([
+            'placeholder' => 'Електронна пошта',
+        ]))->setLabel('Електронна пошта')->setFilters([
             'trim',
             'email',
         ]));

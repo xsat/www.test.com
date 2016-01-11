@@ -143,18 +143,6 @@ body {
     border: 1px solid #64BC8C;
     float: right;
 }
-.admin {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: red;
-    text-decoration: underline;
-    z-index: 2;
-}
-.admin:hover {
-    color: red;
-    text-decoration: none;
-}
 .breadcrumbs {
     font-size: 7px;
     line-height: 15px;

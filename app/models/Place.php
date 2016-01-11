@@ -28,6 +28,16 @@ class Place extends Order
         }
     }
 
+    public function getPositionsOrder()
+    {
+        return $this->getPositions(['order' => '_order DESC']);
+    }
+
+    public function getPlacesOrder()
+    {
+        return $this->getPlaces(['order' => '_order DESC']);
+    }
+
     public function getGridFields()
     {
         return [
@@ -35,7 +45,7 @@ class Place extends Order
         ];
     }
 
-    public function getPlaces()
+    public function getMainPlaces()
     {
         $params = [
             'conditions' => 'id != :id: AND place_id != :id:',
@@ -46,7 +56,12 @@ class Place extends Order
         ];
 
         if ($this->id === null) {
-            $params['conditions'] = 'place_id = 0';
+            if ($this->place_id !== null) {
+                $params['conditions'] = 'id = :id:';
+                $params['bind']['id'] = $this->place_id;
+            } else {
+                $params['conditions'] = 'place_id = 0';
+            }
         }
 
         $placeModels = Place::find($params);

@@ -4,7 +4,7 @@
     </a>
     {% if placeItem.places|length  %}
         <ul>
-            {% for placeItem in placeItem.places %}
+            {% for placeItem in placeItem.getPlacesOrder() %}
                 {{ partial('partials/menu/item') }}
             {% endfor %}
         </ul>

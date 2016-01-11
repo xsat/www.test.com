@@ -7,7 +7,7 @@
 {% endif %}
 
 {% if place.positions is defined %}
-    {% for position in place.positions %}
+    {% for position in place.getPositionsOrder() %}
         <div class="item-list row">
             <div class="col-md-10 row">
                 <div class="col-md-6">
@@ -28,9 +28,29 @@
                         <strong>{{ position.person.rank }}</strong>
                     </div>
                     <div class="col-md-6">
-                        {{ position.person.name }} ({{ position.person.getYears() }})
+                        {{ position.person.name }} ({{ position.person.getYears() }} років)
                     </div>
                 </div>
+                {% if position.person.email %}
+                    <div class="col-md-10 row">
+                        <div class="col-md-6">
+                            <strong>Електронна пошта</strong>
+                        </div>
+                        <div class="col-md-6">
+                            {{ position.person.email }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% for phone in position.person.getPhonesOrder() %}
+                    <div class="col-md-10 row">
+                        <div class="col-md-6">
+                            <strong>{{ phone.name }}</strong>
+                        </div>
+                        <div class="col-md-6">
+                            {{ phone.number }}
+                        </div>
+                    </div>
+                {% endfor %}
             {% endif %}
         </div>
     {% endfor %}

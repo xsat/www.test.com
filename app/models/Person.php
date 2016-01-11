@@ -18,12 +18,32 @@ class Person extends Model
         $this->belongsTo('position_id', '\Models\Position', 'id');
     }
 
+    public function getPhonesOrder()
+    {
+        return $this->getPhones(['order' => '_order DESC']);
+    }
+
     public function getGridFields()
     {
         return [
             'rank' => 'Звання',
             'name' => 'Ім\'я',
         ];
+    }
+
+    public function findParent($id = 0)
+    {
+        return [
+            'conditions' => 'position_id = :position_id:',
+            'bind' => [
+                'position_id' => $id,
+            ]
+        ];
+    }
+
+    public function setParent($id = null)
+    {
+        $this->position_id = $id;
     }
 
     public function getYears()

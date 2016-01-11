@@ -14,7 +14,7 @@ class PlaceForm extends ParentForm
             $model = new \Models\Place();
         }
 
-        $places = $model->getPlaces();
+        $places = $model->getMainPlaces();
 
         $this->add((new Select('place_id', $places, [
             'class' => 'form-control',

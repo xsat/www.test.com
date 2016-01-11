@@ -62,13 +62,12 @@ class AdminController extends ParentController
         $this->tag->setTitle('Додати '. $this->getName());
 
         $model = $this->getModel();
-        $form = $this->getForm();
 
         if ($id !== null) {
             $model->setParent($id);
         }
 
-        $form->setEntity($model);
+        $form = $this->getForm($model);
 
         if ($this->request->isPost() && $form->isValid($this->request->getPost())) {
             if ($this->saveForm($model)) {
