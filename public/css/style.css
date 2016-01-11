@@ -12,33 +12,38 @@ body {
 .header .header-menu {
     float: right;
     width: 483px;
+    width: calc(70% - 115px);
     margin: 30px 0 0 0;
 }
 .header .header-menu li {
     padding: 0;
+    width: 33.33333%;
 }
 .header .header-menu a {
     color: #fff;
     background-color: #64BC8C;
     font-size: 15px;
     text-align: center;
-    width: 160px;
+    width: 100%;
     margin-right: 1px;
     margin-bottom: 1px;
     display: inline-block;
     text-decoration: none;
     line-height: 35px;
+    border-right: 1px solid #fff;
 }
 .header .header-menu a.active,
 .header .header-menu a:hover {
     background-color: #009746;
 }
 .header .search {
+    width: 30%;
     float: right;
     margin: 30px 0 0 0;
 }
 .header .search input[type="text"] {
     width: 269px;
+    width: calc(100% - 44px);
     line-height: 33px;
     font-size: 15px;
     border: 1px solid #64BC8C;
@@ -205,8 +210,12 @@ h1 {
     margin-bottom: 0;
     margin-top: 15px;
 }
-@media (min-width: 1200px) {
-    .container {
-        width: 942px;
+@media (max-width: 991px) {
+    .left-menu {
+        margin-right: 0;
+    }
+    .breadcrumbs,
+    .breadcrumbs .list-inline  {
+        margin: 0;
     }
 }
