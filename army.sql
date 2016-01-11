@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `person` (
   `position_id` bigint(20) unsigned DEFAULT NULL,
   `name` varchar(256) NOT NULL,
   `rank` varchar(128) NOT NULL,
-  `email` int(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
   `photo` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
