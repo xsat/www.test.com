@@ -1,3 +1,2 @@
-.idea/*
-app/cache/models
-app/cache/views
+/.idea/*
+/app/cache/*
